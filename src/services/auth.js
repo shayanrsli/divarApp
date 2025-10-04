@@ -19,4 +19,4 @@ const checkOtp = async (mobile , code) => {
     }
 }
 
-export { checkOtp , sendOtp }
+export  { checkOtp , sendOtp }
