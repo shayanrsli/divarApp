@@ -1,4 +1,6 @@
 import { sendOtp } from "../../services/auth";
+import styles from "./AuthForm.module.css";
+
 
 function SendOtpForm ({mobile , setMobile , setStep}) {
     const submitHandler = async (event) => {
@@ -16,15 +18,30 @@ function SendOtpForm ({mobile , setMobile , setStep}) {
     }
 
     return(
-        <form onSubmit={submitHandler}>
-            <p>ورود به حساب کاربری</p>
-            <span>
-                برای استفاده از امکانات دیوار، لطفاً شمارهٔ موبایل خود را وارد کنید. کد تأیید به این شماره پیامک خواهد شد.
-            </span>
-            <label htmlFor="input">شمارهٔ موبایل خود را وارد کنید</label>
-            <input type="text" id="input" placeholder="شماره موبایل" onChange={e => setMobile(e.target.value)} value={mobile} />
-            <button type="submit">ارسال کئ تایید</button>
-        </form>
+    <form onSubmit={submitHandler} className={styles.form}>
+      <p className={styles.title}>ورود به حساب کاربری</p>
+      <span className={styles.desc}>
+        برای استفاده از امکانات دیوار، لطفاً شمارهٔ موبایل خود را وارد کنید.  
+        کد تأیید به این شماره پیامک خواهد شد.
+      </span>
+
+      <label htmlFor="mobile" className={styles.label}>
+        شمارهٔ موبایل خود را وارد کنید
+      </label>
+      <input
+        type="text"
+        id="mobile"
+        placeholder="شماره موبایل"
+        className={styles.input}
+        onChange={(e) => setMobile(e.target.value)}
+        value={mobile}
+      />
+
+      <button type="submit" className={styles.buttonPrimary}>
+        ارسال کد تأیید
+      </button>
+    </form>
+
     )
 }
 
