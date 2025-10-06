@@ -1,9 +1,5 @@
 import api from "../configs/api";
-import { getCookie } from "../utils/Cookie";
 
-
-const token = getCookie("accessToken")
-
-const getProfile = ()  => api.get("user/whoami" , {headers : {Authorization : `Bearer ${token}`}});
+const getProfile = ()  => api.get("user/whoami").then(res => res || false);
 
 export default getProfile;
